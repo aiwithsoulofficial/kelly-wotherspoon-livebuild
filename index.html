@@ -85,7 +85,10 @@
       font-weight: 600;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: #7C8B6F;
+      background: linear-gradient(135deg, #7C8B6F, #6B7A5F);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       display: block;
       margin-bottom: 12px;
     }
@@ -111,15 +114,16 @@
       cursor: pointer;
     }
     .btn-primary {
-      background: #7C8B6F;
+      background: linear-gradient(135deg, #B7634B 0%, #C4765E 50%, #A8553D 100%);
       color: #fff;
-      border: 2px solid #7C8B6F;
+      border: 2px solid #B7634B;
+      box-shadow: 0 4px 12px rgba(183, 99, 75, 0.2), inset 0 1px 0 rgba(255,255,255,0.15);
     }
     .btn-primary:hover {
-      background: #8E9E7E;
-      border-color: #8E9E7E;
+      background: linear-gradient(135deg, #C4765E 0%, #D4876F 50%, #B7634B 100%);
+      border-color: #C4765E;
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(196, 149, 106, 0.3);
+      box-shadow: 0 8px 24px rgba(183, 99, 75, 0.35), inset 0 1px 0 rgba(255,255,255,0.2);
     }
     .btn-ghost {
       background: transparent;
@@ -300,13 +304,14 @@
       gap: 24px;
     }
     .problem-card {
-      background: rgba(253, 246, 242, 0.85);
+      background: linear-gradient(145deg, rgba(245,240,235,0.95) 0%, rgba(237,232,224,0.85) 100%);
       padding: 36px;
-      border-radius: 8px;
-      border: 1px solid rgba(196, 149, 106, 0.1);
-      transition: transform 0.3s ease;
+      border-radius: 12px;
+      border: 1px solid rgba(124,139,111,0.12);
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(59,50,41,0.04), 0 1px 2px rgba(59,50,41,0.06);
     }
-    .problem-card:hover { transform: translateY(-2px); }
+    .problem-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(59,50,41,0.08), 0 2px 6px rgba(124,139,111,0.1); }
     .problem-card h3 {
       color: #3B3229;
       margin-bottom: 10px;
@@ -348,12 +353,13 @@
     }
     .service-card {
       padding: 40px;
-      background: #F5F0EB;
-      border-radius: 8px;
-      border: 1px solid rgba(196, 149, 106, 0.12);
+      background: linear-gradient(160deg, #F5F0EB 0%, #EDE8E0 100%);
+      border-radius: 12px;
+      border: 1px solid rgba(124,139,111,0.1);
       transition: all 0.4s ease;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 2px 12px rgba(59,50,41,0.05), 0 1px 3px rgba(59,50,41,0.08);
     }
     .service-card::before {
       content: '';
