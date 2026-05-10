@@ -1,2081 +1,1033 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI with Soul | Kelly Wotherspoon - Claude AI Specialist Australia</title>
-<meta name="description" content="Kelly Wotherspoon builds AI-powered systems, websites, and voice agents using Claude AI for service businesses doing $200K-$2M. Australia's leading Claude AI specialist. Systems that work while you sleep.">
-<meta name="keywords" content="Claude AI specialist Australia, AI automation for service businesses, AI voice agents Australia, business automation Australia, Claude AI consultant, AI website builder Australia, Kelly Wotherspoon, AI with Soul">
-<meta property="og:title" content="AI with Soul | Systems that work while you sleep.">
-<meta property="og:description" content="Kelly Wotherspoon builds AI systems for service businesses using Claude AI. Websites, voice agents, automation. Australia's Claude AI specialist.">
-<meta property="og:image" content="headshot-1.jpg">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://aiwithsoul.com.au">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://aiwithsoul.com.au">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "AI with Soul",
-  "description": "Australia's leading Claude AI specialist. Kelly Wotherspoon builds real AI infrastructure - websites, voice agents, and automation systems - for service-based businesses doing $200K to $2M. Systems that work while you sleep.",
-  "url": "https://aiwithsoul.com.au",
-  "founder": {
-    "@type": "Person",
-    "name": "Kelly Wotherspoon",
-    "jobTitle": "Claude AI Specialist",
-    "sameAs": "https://aiwithsoul.com.au"
-  },
-  "areaServed": "Australia",
-  "priceRange": "$$$$",
-  "serviceType": ["Claude AI Integration", "AI Automation", "AI Voice Agents", "Business Automation", "Custom AI Websites", "AI Systems Architecture"],
-  "knowsAbout": ["Claude AI", "Business Automation", "AI Voice Agents", "Service Business Systems", "Custom AI Infrastructure"],
-  "slogan": "Systems that work while you sleep."
-}
-</script>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-
-<style>
-/* =============================================
-   RESET & CUSTOM PROPERTIES
-   ============================================= */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --ink: #0A0908;
-  --obsidian: #1A1714;
-  --smoke: #2D2824;
-  --dust: #5A5250;
-  --parchment: #F0E4CC;
-  --cream: #FBF5EC;
-  --gold: #C9A55A;
-  --gold-warm: #E8C97A;
-  --rose-gold: #D4937A;
-  --steel: #5E7A8A;
-
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'DM Sans', system-ui, sans-serif;
-  --font-mono: 'Space Mono', monospace;
-
-  --max-w: 1340px;
-  --section-v: 100px;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--ink);
-  color: var(--parchment);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.7;
-  font-weight: 400;
-  cursor: none;
-  overflow-x: hidden;
-}
-
-a {
-  color: var(--gold);
-  text-decoration: none;
-  transition: color 0.3s;
-}
-a:hover { color: var(--gold-warm); }
-
-img { max-width: 100%; height: auto; display: block; }
-
-/* =============================================
-   FILM GRAIN OVERLAY
-   ============================================= */
-.grain-overlay {
-  position: fixed;
-  inset: -200%;
-  width: 400%;
-  height: 400%;
-  z-index: 9998;
-  pointer-events: none;
-  opacity: 0.032;
-  animation: grainShift 0.9s steps(3) infinite;
-}
-@keyframes grainShift {
-  0%   { transform: translate(0, 0); }
-  33%  { transform: translate(-2%, -3%); }
-  66%  { transform: translate(2%, 1%); }
-  100% { transform: translate(-1%, 2%); }
-}
-
-/* =============================================
-   CUSTOM CURSOR
-   ============================================= */
-.cursor-dot {
-  position: fixed;
-  width: 7px;
-  height: 7px;
-  background: var(--gold);
-  border-radius: 50%;
-  top: 0; left: 0;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 10000;
-  transition: transform 0.08s;
-}
-.cursor-ring {
-  position: fixed;
-  width: 34px;
-  height: 34px;
-  border: 1px solid rgba(201,165,90,0.55);
-  border-radius: 50%;
-  top: 0; left: 0;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 10000;
-  transition: width 0.25s, height 0.25s, opacity 0.25s;
-}
-.cursor-ring.hover {
-  width: 56px;
-  height: 56px;
-  opacity: 0.35;
-}
-@media (max-width: 768px) {
-  .cursor-dot, .cursor-ring { display: none; }
-  body { cursor: auto; }
-}
-
-/* =============================================
-   LOADING SCREEN
-   ============================================= */
-.loader {
-  position: fixed;
-  inset: 0;
-  background: var(--ink);
-  z-index: 99999;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  transition: opacity 0.9s ease, visibility 0.9s ease;
-}
-.loader.done {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-.loader-logo {
-  width: 90px;
-  height: 90px;
-  object-fit: contain;
-  animation: loaderFadeIn 0.7s ease forwards;
-}
-.loader-name {
-  font-family: var(--font-display);
-  font-size: 26px;
-  font-weight: 300;
-  color: var(--cream);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  opacity: 0;
-  animation: fadeSlideUp 0.7s ease 0.35s forwards;
-}
-.loader-bar-track {
-  width: 72px;
-  height: 1px;
-  background: var(--smoke);
-  position: relative;
-  overflow: hidden;
-  opacity: 0;
-  animation: fadeSlideUp 0.4s ease 0.2s forwards;
-}
-.loader-bar-fill {
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  background: var(--gold);
-  width: 0%;
-  animation: barFill 1.3s ease 0.3s forwards;
-}
-@keyframes loaderFadeIn {
-  from { opacity: 0; transform: scale(0.92); }
-  to   { opacity: 1; transform: scale(1); }
-}
-@keyframes fadeSlideUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes barFill {
-  from { width: 0%; }
-  to   { width: 100%; }
-}
-
-/* =============================================
-   NAVIGATION
-   ============================================= */
-#site-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 1000;
-  padding: 0 40px;
-  transition: background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s;
-  border-bottom: 1px solid transparent;
-}
-#site-nav.scrolled {
-  background: rgba(10,9,8,0.94);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom-color: var(--smoke);
-}
-.nav-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 76px;
-  gap: 32px;
-}
-.nav-logo {
-  height: 46px;
-  width: auto;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-.nav-links {
-  display: flex;
-  align-items: center;
-  list-style: none;
-  gap: 36px;
-  flex-shrink: 0;
-}
-.nav-links a {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: var(--parchment);
-  opacity: 0.75;
-  transition: color 0.3s, opacity 0.3s;
-}
-.nav-links a:hover {
-  color: var(--gold);
-  opacity: 1;
-}
-.nav-cta {
-  display: inline-block;
-  padding: 10px 22px;
-  border: 1px solid var(--gold);
-  color: var(--gold) !important;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  opacity: 1 !important;
-  background: transparent;
-  transition: background 0.3s, color 0.3s !important;
-}
-.nav-cta:hover {
-  background: var(--gold) !important;
-  color: var(--ink) !important;
-}
-
-/* Hamburger */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  flex-shrink: 0;
-}
-.hamburger span {
-  display: block;
-  width: 24px;
-  height: 1px;
-  background: var(--cream);
-  transition: transform 0.3s, opacity 0.3s;
-  transform-origin: center;
-}
-.hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-
-/* Mobile overlay menu */
-.mobile-nav {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: var(--ink);
-  z-index: 999;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 44px;
-}
-.mobile-nav.open {
-  display: flex;
-}
-.mobile-nav a {
-  font-family: var(--font-display);
-  font-size: 38px;
-  font-weight: 300;
-  color: var(--cream);
-  letter-spacing: 0.04em;
-  transition: color 0.3s;
-}
-.mobile-nav a:hover { color: var(--gold); }
-.mobile-book {
-  margin-top: 8px;
-  padding: 16px 44px;
-  border: 1px solid var(--gold);
-  color: var(--gold) !important;
-  font-family: var(--font-mono) !important;
-  font-size: 13px !important;
-  letter-spacing: 0.13em !important;
-  font-weight: 400 !important;
-  text-transform: uppercase !important;
-}
-
-@media (max-width: 768px) {
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  #site-nav { padding: 0 24px; }
-}
-
-/* =============================================
-   HERO SECTION
-   ============================================= */
-.hero {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  min-height: 640px;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-}
-
-.hero-photo {
-  position: absolute;
-  inset: 0;
-  background: url('headshot-1.jpg') no-repeat center top / cover;
-  transform: scale(1.06);
-  animation: heroZoom 14s ease-out forwards;
-}
-@keyframes heroZoom {
-  from { transform: scale(1.08); }
-  to   { transform: scale(1.0); }
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    108deg,
-    rgba(10,9,8,0.93) 0%,
-    rgba(10,9,8,0.72) 42%,
-    rgba(10,9,8,0.28) 100%
-  );
-}
-.hero-fade-bottom {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 220px;
-  background: linear-gradient(to top, var(--ink) 0%, transparent 100%);
-}
-
-/* Ambient orbs */
-.orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(90px);
-  pointer-events: none;
-  animation: orbBreath 9s ease-in-out infinite;
-}
-@keyframes orbBreath {
-  0%, 100% { opacity: 0.55; transform: scale(1); }
-  50%       { opacity: 0.9; transform: scale(1.12); }
-}
-.orb-gold {
-  width: 560px; height: 560px;
-  background: radial-gradient(circle, rgba(201,165,90,0.13) 0%, transparent 70%);
-  top: -120px; left: -80px;
-}
-.orb-rose {
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(212,147,122,0.09) 0%, transparent 70%);
-  bottom: 80px; right: 15%;
-  animation-delay: 3s;
-  animation-duration: 11s;
-}
-
-/* Ghost watermark */
-.ghost-mark {
-  position: absolute;
-  font-family: var(--font-display);
-  font-weight: 300;
-  color: var(--cream);
-  pointer-events: none;
-  user-select: none;
-  line-height: 1;
-  z-index: 1;
-}
-
-.hero-ghost {
-  font-size: 30vw;
-  opacity: 0.022;
-  bottom: -60px;
-  right: -40px;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 52px 88px;
-}
-
-.hero-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 28px;
-  opacity: 0;
-  animation: fadeSlideUp 0.8s ease 1.8s forwards;
-}
-
-.hero-title-mask {
-  overflow: hidden;
-  display: block;
-}
-.hero-title-line {
-  display: block;
-  font-family: var(--font-display);
-  font-size: clamp(72px, 12.5vw, 168px);
-  font-weight: 300;
-  line-height: 0.95;
-  color: var(--cream);
-  transform: translateY(115%);
-  animation: titleReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-.hero-title-line:first-child { animation-delay: 1.5s; }
-.hero-title-line:last-child  { animation-delay: 1.68s; }
-@keyframes titleReveal {
-  from { transform: translateY(115%); }
-  to   { transform: translateY(0); }
-}
-
-/* Brand divider inline in hero */
-.hero-divider {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin: 24px 0 22px;
-  opacity: 0;
-  animation: fadeSlideUp 0.8s ease 2.05s forwards;
-}
-.divider-line {
-  height: 1px;
-  background: var(--gold);
-  flex: 0 0 64px;
-}
-.divider-gem {
-  width: 6px; height: 6px;
-  background: var(--gold);
-  transform: rotate(45deg);
-  flex-shrink: 0;
-}
-
-.hero-tagline {
-  font-family: var(--font-display);
-  font-size: clamp(20px, 2.6vw, 34px);
-  font-weight: 300;
-  font-style: italic;
-  color: var(--parchment);
-  margin-bottom: 10px;
-  opacity: 0;
-  animation: fadeSlideUp 0.8s ease 2.15s forwards;
-}
-.hero-sub {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--dust);
-  margin-bottom: 44px;
-  opacity: 0;
-  animation: fadeSlideUp 0.8s ease 2.25s forwards;
-}
-
-.hero-ctas {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  opacity: 0;
-  animation: fadeSlideUp 0.8s ease 2.35s forwards;
-}
-
-.btn-primary {
-  display: inline-block;
-  padding: 15px 38px;
-  background: var(--gold);
-  color: var(--ink);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
-}
-.btn-primary:hover {
-  background: var(--gold-warm);
-  color: var(--ink);
-  transform: translateY(-2px);
-  box-shadow: 0 14px 36px rgba(201,165,90,0.28);
-}
-
-.btn-ghost {
-  display: inline-block;
-  padding: 15px 38px;
-  border: 1px solid rgba(201,165,90,0.45);
-  color: var(--parchment);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  transition: border-color 0.3s, color 0.3s, transform 0.3s;
-}
-.btn-ghost:hover {
-  border-color: var(--gold);
-  color: var(--gold);
-  transform: translateY(-2px);
-}
-
-/* Scroll indicator */
-.scroll-hint {
-  position: absolute;
-  bottom: 44px;
-  right: 52px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  z-index: 2;
-  opacity: 0;
-  animation: fadeSlideUp 0.8s ease 2.6s forwards;
-}
-.scroll-hint-text {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--dust);
-  writing-mode: vertical-rl;
-}
-.scroll-hint-line {
-  width: 1px;
-  height: 44px;
-  background: var(--dust);
-  position: relative;
-  overflow: hidden;
-}
-.scroll-hint-line::after {
-  content: '';
-  position: absolute;
-  top: -100%;
-  left: 0; right: 0;
-  height: 100%;
-  background: var(--gold);
-  animation: scrollDrop 2.2s ease-in-out 3s infinite;
-}
-@keyframes scrollDrop {
-  0%   { top: -100%; }
-  100% { top: 200%; }
-}
-
-/* =============================================
-   SECTION UTILITIES
-   ============================================= */
-.section-label {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 18px;
-}
-
-.brand-rule {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 52px;
-}
-.brand-rule-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--smoke), transparent);
-}
-.brand-rule-gem {
-  width: 7px; height: 7px;
-  background: var(--gold);
-  transform: rotate(45deg);
-  flex-shrink: 0;
-}
-.brand-rule-dot {
-  width: 3px; height: 3px;
-  background: var(--dust);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-/* Scroll reveal */
-.reveal {
-  opacity: 0;
-  transform: translateY(36px);
-  transition: opacity 0.85s ease, transform 0.85s ease;
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-.reveal-left {
-  opacity: 0;
-  transform: translateX(-36px);
-  transition: opacity 0.85s ease, transform 0.85s ease;
-}
-.reveal-left.visible { opacity: 1; transform: translateX(0); }
-
-.reveal-right {
-  opacity: 0;
-  transform: translateX(36px);
-  transition: opacity 0.85s ease, transform 0.85s ease;
-}
-.reveal-right.visible { opacity: 1; transform: translateX(0); }
-
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
-.delay-4 { transition-delay: 0.4s; }
-.delay-5 { transition-delay: 0.5s; }
-
-/* =============================================
-   ABOUT SECTION
-   ============================================= */
-.about {
-  padding: var(--section-v) 0;
-  position: relative;
-  overflow: hidden;
-}
-.about-orb-a {
-  position: absolute;
-  width: 640px; height: 640px;
-  background: radial-gradient(circle, rgba(201,165,90,0.06) 0%, transparent 70%);
-  top: -100px; right: -140px;
-  border-radius: 50%;
-  pointer-events: none;
-  animation: orbBreath 10s ease-in-out 1s infinite;
-}
-.about-orb-b {
-  position: absolute;
-  width: 380px; height: 380px;
-  background: radial-gradient(circle, rgba(212,147,122,0.05) 0%, transparent 70%);
-  bottom: -60px; left: -60px;
-  border-radius: 50%;
-  pointer-events: none;
-  animation: orbBreath 12s ease-in-out 4s infinite;
-}
-.about-ghost {
-  font-size: 22vw;
-  opacity: 0.025;
-  top: 50%;
-  transform: translateY(-50%);
-  right: -80px;
-  z-index: 0;
-}
-
-.about-grid {
-  position: relative;
-  z-index: 1;
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 52px;
-  display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 88px;
-  align-items: center;
-}
-
-.about-photo-wrap {
-  position: relative;
-}
-.about-photo-frame {
-  position: relative;
-}
-.about-photo-frame::before {
-  content: '';
-  position: absolute;
-  top: -14px; left: -14px;
-  right: 14px; bottom: 14px;
-  border: 1px solid rgba(201,165,90,0.28);
-  pointer-events: none;
-  z-index: 0;
-}
-.about-photo-frame::after {
-  content: '';
-  position: absolute;
-  top: 14px; left: 14px;
-  right: -14px; bottom: -14px;
-  border: 1px solid rgba(212,147,122,0.18);
-  pointer-events: none;
-  z-index: 0;
-}
-.about-photo {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-}
-.about-badge {
-  position: absolute;
-  bottom: 28px;
-  right: -24px;
-  z-index: 2;
-  background: var(--obsidian);
-  border: 1px solid var(--smoke);
-  padding: 18px 22px;
-  text-align: center;
-  box-shadow: 0 24px 48px rgba(0,0,0,0.5);
-}
-.about-badge-label {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--dust);
-  display: block;
-  margin-top: 6px;
-  line-height: 1.4;
-}
-.about-badge-icon {
-  display: block;
-  color: var(--gold);
-  margin: 0 auto;
-}
-
-.about-copy {}
-.about-heading {
-  font-family: var(--font-display);
-  font-size: clamp(40px, 4.5vw, 64px);
-  font-weight: 300;
-  color: var(--cream);
-  line-height: 1.05;
-  margin-bottom: 16px;
-}
-.about-heading em {
-  font-style: italic;
-  color: var(--gold);
-}
-.about-pull {
-  font-family: var(--font-display);
-  font-size: clamp(19px, 2.2vw, 26px);
-  font-style: italic;
-  font-weight: 300;
-  color: var(--parchment);
-  border-left: 2px solid var(--gold);
-  padding-left: 22px;
-  margin: 28px 0 32px;
-  line-height: 1.45;
-}
-.about-body {
-  font-size: 16px;
-  line-height: 1.85;
-  color: var(--parchment);
-  opacity: 0.88;
-  margin-bottom: 20px;
-}
-
-.about-pillars {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--smoke);
-  margin-top: 40px;
-  border-top: 2px solid var(--gold);
-}
-.about-pillar {
-  background: var(--ink);
-  padding: 24px 20px;
-}
-.about-pillar-head {
-  font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 400;
-  color: var(--gold);
-  display: block;
-  margin-bottom: 4px;
-  line-height: 1.1;
-}
-.about-pillar-body {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--dust);
-  line-height: 1.5;
-}
-
-/* =============================================
-   HOW IT WORKS
-   ============================================= */
-.how {
-  padding: var(--section-v) 0;
-  background: var(--obsidian);
-  position: relative;
-  overflow: hidden;
-}
-.how-ghost {
-  font-size: 28vw;
-  opacity: 0.022;
-  bottom: -80px;
-  right: -60px;
-}
-.how-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 52px;
-}
-.how-header {
-  text-align: center;
-  margin-bottom: 80px;
-}
-.how-heading {
-  font-family: var(--font-display);
-  font-size: clamp(38px, 4.5vw, 60px);
-  font-weight: 300;
-  color: var(--cream);
-  line-height: 1.05;
-}
-
-.how-steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--smoke);
-  position: relative;
-}
-.how-step {
-  background: var(--ink);
-  padding: 52px 36px;
-  text-align: center;
-  transition: background 0.35s;
-  position: relative;
-}
-.how-step::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--gold);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease;
-}
-.how-step:hover { background: rgba(26,23,20,0.7); }
-.how-step:hover::after { transform: scaleX(1); }
-
-.step-circle {
-  width: 60px; height: 60px;
-  border: 1px solid rgba(201,165,90,0.5);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 32px;
-  font-family: var(--font-display);
-  font-size: 26px;
-  font-weight: 300;
-  color: var(--gold);
-  transition: border-color 0.3s, background 0.3s;
-}
-.how-step:hover .step-circle {
-  border-color: var(--gold);
-  background: rgba(201,165,90,0.06);
-}
-.step-title {
-  font-family: var(--font-display);
-  font-size: 24px;
-  font-weight: 400;
-  color: var(--cream);
-  margin-bottom: 16px;
-}
-.step-body {
-  font-size: 15px;
-  line-height: 1.75;
-  color: var(--parchment);
-  opacity: 0.78;
-}
-
-/* =============================================
-   SERVICES SECTION
-   ============================================= */
-.services {
-  padding: var(--section-v) 0;
-  position: relative;
-  overflow: hidden;
-}
-.services-center-orb {
-  position: absolute;
-  width: 800px; height: 800px;
-  background: radial-gradient(circle, rgba(201,165,90,0.045) 0%, transparent 65%);
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: orbBreath 14s ease-in-out 2s infinite;
-}
-.services-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 52px;
-}
-.services-header {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  align-items: end;
-  margin-bottom: 64px;
-}
-.services-heading {
-  font-family: var(--font-display);
-  font-size: clamp(40px, 4.8vw, 66px);
-  font-weight: 300;
-  color: var(--cream);
-  line-height: 1.0;
-}
-.services-intro {
-  font-size: 17px;
-  line-height: 1.8;
-  color: var(--parchment);
-  opacity: 0.82;
-  padding-bottom: 4px;
-}
-.services-intro strong {
-  color: var(--gold);
-  font-weight: 400;
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: 1.45fr 1fr 1fr 1fr;
-  gap: 1px;
-  background: var(--smoke);
-}
-
-.svc-card {
-  background: var(--ink);
-  padding: 52px 36px 44px;
-  position: relative;
-  overflow: hidden;
-  transition: background 0.35s;
-}
-.svc-card::before {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(to right, var(--gold), var(--rose-gold));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.45s ease;
-}
-.svc-card:hover { background: var(--obsidian); }
-.svc-card:hover::before { transform: scaleX(1); }
-
-.svc-num {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.15em;
-  color: var(--gold);
-  opacity: 0.55;
-  margin-bottom: 28px;
-}
-.svc-icon {
-  width: 38px; height: 38px;
-  color: var(--gold);
-  margin-bottom: 20px;
-}
-.svc-name {
-  font-family: var(--font-display);
-  font-size: 24px;
-  font-weight: 400;
-  color: var(--cream);
-  margin-bottom: 14px;
-  line-height: 1.2;
-}
-.svc-body {
-  font-size: 15px;
-  line-height: 1.75;
-  color: var(--parchment);
-  opacity: 0.75;
-  margin-bottom: 28px;
-}
-.svc-link {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: gap 0.3s, color 0.3s;
-}
-.svc-link:hover { gap: 16px; color: var(--gold-warm); }
-.svc-link::after { content: '\2192'; }
-
-/* =============================================
-   MOOD BREAK
-   ============================================= */
-.mood-break {
-  position: relative;
-  height: 58vh;
-  min-height: 380px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.mood-bg {
-  position: absolute;
-  inset: 0;
-  background: url('vibe-2.png') no-repeat center / cover;
-  transform: scale(1.06);
-}
-.mood-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(10,9,8,0.6) 0%,
-    rgba(10,9,8,0.82) 100%
-  );
-}
-.mood-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  max-width: 780px;
-  padding: 0 48px;
-}
-.mood-quote {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 4vw, 52px);
-  font-weight: 300;
-  font-style: italic;
-  color: var(--cream);
-  line-height: 1.3;
-  margin-bottom: 18px;
-}
-.mood-attr {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--gold);
-}
-
-/* =============================================
-   CTA SECTION
-   ============================================= */
-.cta-section {
-  padding: 160px 0;
-  position: relative;
-  overflow: hidden;
-  background: var(--obsidian);
-}
-.cta-texture {
-  position: absolute;
-  inset: 0;
-  background: url('vibe-1.png') no-repeat center / cover;
-  opacity: 0.06;
-  mix-blend-mode: luminosity;
-}
-.cta-orb {
-  position: absolute;
-  width: 700px; height: 700px;
-  background: radial-gradient(circle, rgba(201,165,90,0.12) 0%, transparent 70%);
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: orbBreath 7s ease-in-out infinite;
-}
-.cta-orb-rose {
-  position: absolute;
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(212,147,122,0.08) 0%, transparent 70%);
-  top: 20%; right: 5%;
-  border-radius: 50%;
-  pointer-events: none;
-  animation: orbBreath 11s ease-in-out 2s infinite;
-}
-
-.cta-inner {
-  position: relative;
-  z-index: 2;
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 52px;
-  text-align: center;
-}
-.cta-heading {
-  font-family: var(--font-display);
-  font-size: clamp(48px, 6vw, 84px);
-  font-weight: 300;
-  color: var(--cream);
-  line-height: 1.05;
-  margin-bottom: 24px;
-}
-.cta-heading em {
-  font-style: italic;
-  color: var(--gold);
-}
-.cta-sub {
-  font-size: 18px;
-  line-height: 1.8;
-  color: var(--parchment);
-  opacity: 0.85;
-  max-width: 540px;
-  margin: 0 auto 48px;
-}
-.cta-buttons {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.cta-footnote {
-  margin-top: 28px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--dust);
-}
-
-/* =============================================
-   CONTACT SECTION
-   ============================================= */
-.contact {
-  padding: var(--section-v) 0;
-  background: var(--ink);
-  position: relative;
-  overflow: hidden;
-}
-.contact-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 52px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 88px;
-}
-.contact-heading {
-  font-family: var(--font-display);
-  font-size: clamp(38px, 4.5vw, 60px);
-  font-weight: 300;
-  color: var(--cream);
-  line-height: 1.05;
-  margin-bottom: 20px;
-}
-.contact-sub {
-  font-size: 17px;
-  line-height: 1.8;
-  color: var(--parchment);
-  opacity: 0.82;
-  margin-bottom: 44px;
-}
-.contact-items {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-bottom: 36px;
-}
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-.contact-icon-box {
-  width: 42px; height: 42px;
-  border: 1px solid var(--smoke);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: var(--gold);
-}
-.contact-item-text {
-  font-size: 16px;
-  color: var(--parchment);
-}
-.contact-item-text a {
-  color: var(--parchment);
-  transition: color 0.3s;
-}
-.contact-item-text a:hover { color: var(--gold); }
-
-.social-row {
-  display: flex;
-  gap: 12px;
-}
-.social-btn {
-  width: 44px; height: 44px;
-  border: 1px solid var(--smoke);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--dust);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.05em;
-  transition: border-color 0.3s, color 0.3s;
-}
-.social-btn:hover {
-  border-color: var(--gold);
-  color: var(--gold);
-}
-
-.contact-aside {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  padding-top: 4px;
-}
-.aside-block {
-  background: var(--obsidian);
-  border: 1px solid var(--smoke);
-  border-left: 2px solid var(--gold);
-  padding: 28px 28px 28px 26px;
-}
-.aside-block-title {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 10px;
-}
-.aside-block-body {
-  font-size: 15px;
-  line-height: 1.75;
-  color: var(--parchment);
-  opacity: 0.82;
-}
-
-/* =============================================
-   MOOD GALLERY STRIP
-   ============================================= */
-.mood-gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  height: 280px;
-  overflow: hidden;
-}
-.gallery-cell {
-  position: relative;
-  overflow: hidden;
-}
-.gallery-cell img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-.gallery-cell:hover img { transform: scale(1.06); }
-.gallery-cell::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(10,9,8,0.25);
-  transition: background 0.3s;
-}
-.gallery-cell:hover::after { background: rgba(10,9,8,0.05); }
-
-/* =============================================
-   FOOTER
-   ============================================= */
-footer {
-  background: var(--obsidian);
-  border-top: 1px solid var(--smoke);
-  padding: 48px 0;
-}
-.footer-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 52px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
-  flex-wrap: wrap;
-}
-.footer-logo {
-  height: 54px;
-  width: auto;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-.footer-mid {
-  flex: 1;
-  text-align: center;
-  min-width: 200px;
-}
-.footer-tagline {
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-style: italic;
-  font-weight: 300;
-  color: var(--parchment);
-  opacity: 0.65;
-  display: block;
-}
-.footer-copy {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  color: var(--dust);
-  margin-top: 6px;
-  display: block;
-}
-.footer-links {
-  text-align: right;
-  flex-shrink: 0;
-}
-.footer-links a {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--dust);
-  transition: color 0.3s;
-}
-.footer-links a + a { margin-top: 8px; }
-.footer-links a:hover { color: var(--gold); }
-
-/* =============================================
-   RESPONSIVE - TABLET
-   ============================================= */
-@media (max-width: 1080px) {
-  .services-grid {
-    grid-template-columns: 1fr 1fr;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI with Soul - Kelly Wotherspoon | AI Systems Builder for Service Businesses</title>
+  <meta name="description" content="Kelly Wotherspoon builds custom AI systems for service businesses using Claude. Websites, voice agents, and automation that run while you sleep. Based in Australia.">
+  <meta property="og:title" content="AI with Soul - Kelly Wotherspoon">
+  <meta property="og:description" content="Custom AI systems that run your business while you sleep. Built with Claude by Kelly Wotherspoon.">
+  <meta property="og:image" content="headshot-1.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aiwithsoul.com.au">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://aiwithsoul.com.au">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "AI with Soul",
+    "url": "https://aiwithsoul.com.au",
+    "description": "Custom AI systems for service-based businesses. Specialising in Claude AI, website development, voice agents, and business automation in Australia.",
+    "founder": {
+      "@type": "Person",
+      "name": "Kelly Wotherspoon",
+      "jobTitle": "AI Systems Builder",
+      "knowsAbout": ["Claude AI", "Business Automation", "Website Development", "Voice Agents", "AI Integration"]
+    },
+    "areaServed": {"@type": "Country", "name": "Australia"},
+    "serviceType": ["AI Systems Development", "Website Development", "Voice Agent Development", "Business Automation", "Claude AI Consulting"]
   }
-  .services-header {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  .about-grid {
-    gap: 56px;
-  }
-}
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #0f1e36;
+      background: #FDF6F2;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
 
-@media (max-width: 900px) {
-  .about-grid {
-    grid-template-columns: 1fr;
-    padding: 0 32px;
-  }
-  .about-photo {
-    aspect-ratio: 4/3;
-  }
-  .about-badge {
-    right: 0;
-  }
-  .how-steps {
-    grid-template-columns: 1fr;
-  }
-  .contact-inner {
-    grid-template-columns: 1fr;
-    gap: 56px;
-    padding: 0 32px;
-  }
-}
+    /* Grain overlay */
+    .grain {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+    }
+    .grain svg { width: 100%; height: 100%; }
 
-/* =============================================
-   RESPONSIVE - MOBILE
-   ============================================= */
-@media (max-width: 768px) {
-  :root { --section-v: 64px; }
+    /* Typography */
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      font-weight: 400;
+      color: #0f1e36;
+    }
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 3.75rem);
+      line-height: 1.08;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+    }
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.12;
+      font-weight: 300;
+    }
+    h3 {
+      font-size: clamp(1.2rem, 2vw, 1.4rem);
+      line-height: 1.3;
+      font-weight: 600;
+    }
+    .label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #C4956A;
+      display: block;
+      margin-bottom: 12px;
+    }
 
-  .hero-content { padding: 0 28px 72px; }
-  .scroll-hint { display: none; }
-  .ghost-mark { display: none; }
+    /* Layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-  .brand-rule { padding: 0 28px; }
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 16px 36px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: #C4956A;
+      color: #fff;
+      border: 2px solid #C4956A;
+    }
+    .btn-primary:hover {
+      background: #D4A882;
+      border-color: #D4A882;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(196, 149, 106, 0.3);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: #0f1e36;
+      border: 2px solid rgba(15, 30, 54, 0.15);
+    }
+    .btn-ghost:hover {
+      border-color: #C4956A;
+      color: #C4956A;
+    }
+    .btn-lg {
+      padding: 20px 48px;
+      font-size: 1rem;
+    }
 
-  .about-grid { padding: 0 24px; }
-  .about-pillars { grid-template-columns: 1fr; }
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(253, 246, 242, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(196, 149, 106, 0.08);
+      transition: box-shadow 0.3s ease;
+    }
+    .nav.scrolled {
+      box-shadow: 0 2px 24px rgba(15, 30, 54, 0.06);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: #0f1e36;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+    .nav-logo em {
+      font-style: italic;
+      color: #C4956A;
+      font-weight: 300;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      color: #0f1e36;
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+    .nav-links a:not(.nav-cta)::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #C4956A;
+      transition: width 0.3s ease;
+    }
+    .nav-links a:not(.nav-cta):hover::after { width: 100%; }
+    .nav-links a:hover { color: #C4956A; }
+    .nav-cta {
+      background: #C4956A;
+      color: #fff !important;
+      padding: 10px 24px;
+      border-radius: 4px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    .nav-cta:hover {
+      background: #D4A882;
+      transform: translateY(-1px);
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      color: #0f1e36;
+    }
+    .nav-toggle svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
 
-  .how-inner { padding: 0 24px; }
-  .how-header { margin-bottom: 48px; }
+    /* ===== HERO ===== */
+    .hero {
+      padding: 140px 0 100px;
+      background: #FDF6F2;
+      overflow: hidden;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .hero-content h1 { margin-bottom: 24px; }
+    .hero-content h1 span { color: #C4956A; }
+    .hero-content p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #2a3a52;
+      margin-bottom: 36px;
+      max-width: 520px;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .hero-image { position: relative; }
+    .hero-image img {
+      width: 100%;
+      height: 580px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 8px;
+      box-shadow: 0 24px 64px rgba(15, 30, 54, 0.08);
+    }
+    .hero-image::after {
+      content: '';
+      position: absolute;
+      bottom: -16px;
+      right: -16px;
+      width: 200px;
+      height: 200px;
+      border: 2px solid rgba(196, 149, 106, 0.2);
+      border-radius: 8px;
+      z-index: -1;
+    }
 
-  .services-inner { padding: 0 24px; }
-  .services-grid { grid-template-columns: 1fr; }
+    /* ===== PROBLEM ===== */
+    .problem {
+      padding: 100px 0;
+      background: #F7EDE4;
+      position: relative;
+    }
+    .problem::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(196,149,106,0.015) 3px, rgba(196,149,106,0.015) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(196,149,106,0.015) 3px, rgba(196,149,106,0.015) 4px);
+      pointer-events: none;
+    }
+    .problem h2 { margin-bottom: 8px; }
+    .problem-subtitle {
+      font-size: 1.15rem;
+      color: #2a3a52;
+      margin-bottom: 48px;
+      max-width: 560px;
+    }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .problem-card {
+      background: rgba(253, 246, 242, 0.85);
+      padding: 36px;
+      border-radius: 8px;
+      border: 1px solid rgba(196, 149, 106, 0.1);
+      transition: transform 0.3s ease;
+    }
+    .problem-card:hover { transform: translateY(-2px); }
+    .problem-card h3 {
+      color: #0f1e36;
+      margin-bottom: 10px;
+      font-size: 1.15rem;
+    }
+    .problem-card h3::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 2px;
+      background: #C4956A;
+      margin-right: 12px;
+      vertical-align: middle;
+    }
+    .problem-card p {
+      font-size: 0.95rem;
+      color: #2a3a52;
+      line-height: 1.7;
+      padding-left: 32px;
+    }
 
-  .cta-inner { padding: 0 28px; }
+    /* ===== SERVICES ===== */
+    .services {
+      padding: 100px 0;
+      background: #FDF6F2;
+    }
+    .services h2 { margin-bottom: 16px; }
+    .services-intro {
+      font-size: 1.05rem;
+      color: #2a3a52;
+      margin-bottom: 48px;
+      max-width: 580px;
+      line-height: 1.8;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .service-card {
+      padding: 40px;
+      background: #FDF6F2;
+      border-radius: 8px;
+      border: 1px solid rgba(196, 149, 106, 0.12);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #C4956A, #D4A882);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(196, 149, 106, 0.1);
+      border-color: rgba(196, 149, 106, 0.25);
+    }
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(196, 149, 106, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: #C4956A;
+    }
+    .service-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+    }
+    .service-card h3 { margin-bottom: 12px; }
+    .service-card p { font-size: 0.95rem; color: #2a3a52; line-height: 1.7; }
 
-  .contact-inner { padding: 0 24px; }
+    /* ===== PROCESS ===== */
+    .process {
+      padding: 100px 0;
+      background: #F7EDE4;
+      position: relative;
+    }
+    .process::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(196,149,106,0.015) 3px, rgba(196,149,106,0.015) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(196,149,106,0.015) 3px, rgba(196,149,106,0.015) 4px);
+      pointer-events: none;
+    }
+    .process h2 { margin-bottom: 56px; }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      position: relative;
+    }
+    .step { position: relative; }
+    .step-number {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 5rem;
+      font-weight: 300;
+      color: rgba(196, 149, 106, 0.2);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .step h3 {
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+    }
+    .step p {
+      font-size: 0.95rem;
+      color: #2a3a52;
+      line-height: 1.7;
+    }
 
-  .mood-gallery { height: 200px; }
+    /* ===== ABOUT ===== */
+    .about {
+      padding: 100px 0;
+      background: #FDF6F2;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 5fr 6fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .about-image img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 8px;
+      box-shadow: 0 24px 64px rgba(15, 30, 54, 0.08);
+    }
+    .about-content h2 { margin-bottom: 24px; }
+    .about-content p {
+      margin-bottom: 20px;
+      color: #2a3a52;
+      font-size: 1rem;
+      line-height: 1.85;
+    }
+    .about-content p em {
+      color: #0f1e36;
+      font-style: italic;
+    }
+    .about-content .btn { margin-top: 16px; }
 
-  .footer-inner { padding: 0 24px; flex-direction: column; text-align: center; }
-  .footer-links { text-align: center; }
+    /* ===== RESULTS ===== */
+    .results {
+      padding: 100px 0;
+      background: #F7EDE4;
+      position: relative;
+    }
+    .results::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(196,149,106,0.015) 3px, rgba(196,149,106,0.015) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(196,149,106,0.015) 3px, rgba(196,149,106,0.015) 4px);
+      pointer-events: none;
+    }
+    .results h2 { margin-bottom: 48px; }
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .result-card {
+      background: rgba(253, 246, 242, 0.85);
+      padding: 40px 36px;
+      border-radius: 8px;
+      border: 1px solid rgba(196, 149, 106, 0.1);
+      text-align: center;
+    }
+    .result-stat {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: #C4956A;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .result-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+    }
+    .result-card p {
+      font-size: 0.9rem;
+      color: #2a3a52;
+      line-height: 1.7;
+    }
 
-  .mood-content { padding: 0 28px; }
-  .mood-break { height: 48vh; }
-}
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
+      padding: 100px 0;
+      background: #FDF6F2;
+    }
+    .testimonials h2 { margin-bottom: 48px; }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: #fff;
+      padding: 40px 32px 32px;
+      border-radius: 8px;
+      border: 1px solid rgba(196, 149, 106, 0.1);
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '\201C';
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 4.5rem;
+      color: rgba(196, 149, 106, 0.15);
+      position: absolute;
+      top: 8px;
+      left: 24px;
+      line-height: 1;
+    }
+    .testimonial-card blockquote {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: #2a3a52;
+      margin-bottom: 24px;
+      padding-top: 20px;
+      font-style: italic;
+    }
+    .testimonial-author {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #0f1e36;
+    }
+    .testimonial-role {
+      font-size: 0.8rem;
+      color: #C4956A;
+      margin-top: 2px;
+    }
 
-@media (max-width: 480px) {
-  .hero-title-line { white-space: normal; }
-  .about-pillars { grid-template-columns: 1fr; }
-  .cta-buttons { flex-direction: column; align-items: center; }
-  .social-row { flex-wrap: wrap; }
-}
+    /* ===== FINAL CTA ===== */
+    .final-cta {
+      background: #0f1e36;
+      text-align: center;
+      padding: 120px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(ellipse at center, rgba(196, 149, 106, 0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .final-cta h2 {
+      color: #FDF6F2;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .final-cta p {
+      color: rgba(253, 246, 242, 0.75);
+      font-size: 1.1rem;
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+      position: relative;
+    }
+    .final-cta .btn-primary { position: relative; }
 
-/* =============================================
-   LARGE SCREENS
-   ============================================= */
-@media (min-width: 1600px) {
-  :root { --max-w: 1500px; }
+    /* ===== FOOTER ===== */
+    footer {
+      background: #0f1e36;
+      border-top: 1px solid rgba(196, 149, 106, 0.1);
+      padding: 48px 24px 36px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .footer-logo {
+      height: 40px;
+      opacity: 0.85;
+    }
+    .footer-text {
+      color: rgba(253, 246, 242, 0.45);
+      font-size: 0.8rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .footer-links a {
+      color: rgba(253, 246, 242, 0.5);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.3s ease;
+    }
+    .footer-links a:hover { color: #D4A882; }
 
-  .hero-content,
-  .brand-rule,
-  .about-grid,
-  .how-inner,
-  .services-inner,
-  .cta-inner,
-  .contact-inner,
-  .footer-inner {
-    padding-left: 68px;
-    padding-right: 68px;
-  }
-  #site-nav { padding: 0 68px; }
-  .nav-logo { height: 54px; }
-  .about-body { font-size: 17px; }
-  .services-intro { font-size: 18px; }
-}
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
 
-@media (min-width: 2200px) {
-  :root { --max-w: 1800px; }
-  body { font-size: 18px; }
+    /* ===== SAVE PDF BUTTON ===== */
+    .save-pdf {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f1e36;
+      color: #FDF6F2;
+      padding: 12px 20px;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid rgba(196, 149, 106, 0.2);
+      font-family: 'Inter', sans-serif;
+      z-index: 998;
+      transition: all 0.3s ease;
+      letter-spacing: 0.02em;
+    }
+    .save-pdf:hover {
+      background: #C4956A;
+      border-color: #C4956A;
+      transform: translateY(-2px);
+    }
 
-  .hero-content,
-  .brand-rule,
-  .about-grid,
-  .how-inner,
-  .services-inner,
-  .cta-inner,
-  .contact-inner,
-  .footer-inner {
-    padding-left: 80px;
-    padding-right: 80px;
-  }
+    /* ===== PRINT STYLES ===== */
+    @media print {
+      .grain, .nav, .save-pdf, .nav-toggle { display: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+      body { background: #fff !important; }
+      section { padding: 40px 0 !important; page-break-inside: avoid; }
+      .hero { padding-top: 40px !important; }
+      .final-cta, footer { background: #0f1e36 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
 
-  .nav-links { gap: 52px; }
-  .nav-links a, .nav-cta { font-size: 12px; }
-}
-
-/* =============================================
-   PRINT
-   ============================================= */
-@media print {
-  .grain-overlay,
-  .cursor-dot,
-  .cursor-ring,
-  .loader,
-  .orb,
-  .ghost-mark,
-  .scroll-hint,
-  .mood-break,
-  .cta-texture,
-  .cta-orb,
-  .cta-orb-rose { display: none !important; }
-  body { background: white; color: #111; cursor: auto; }
-  a { color: #111; }
-}
-</style>
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero-grid { gap: 48px; }
+      .about-grid { gap: 48px; }
+      .steps { gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      .hero { padding: 120px 0 64px; }
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .hero-image { order: -1; }
+      .hero-image img { height: 380px; }
+      .hero-image::after { display: none; }
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn { text-align: center; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; gap: 40px; }
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .about-image { order: -1; }
+      .about-image img { height: 380px; }
+      .results-grid { grid-template-columns: 1fr; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: rgba(253, 246, 242, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 24px;
+        gap: 20px;
+        border-bottom: 1px solid rgba(196, 149, 106, 0.1);
+        box-shadow: 0 12px 32px rgba(15, 30, 54, 0.06);
+      }
+      .nav-toggle { display: block; }
+      section { padding: 72px 0; }
+      .final-cta { padding: 80px 24px; }
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+      .footer-brand { flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.7rem; }
+      .hero-image img { height: 300px; }
+      .about-image img { height: 300px; }
+      .problem-card, .service-card { padding: 28px; }
+      .result-card { padding: 32px 24px; }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- FILM GRAIN -->
-<svg class="grain-overlay" xmlns="http://www.w3.org/2000/svg">
-  <filter id="g">
-    <feTurbulence type="fractalNoise" baseFrequency="0.64" numOctaves="3" stitchTiles="stitch"/>
-    <feColorMatrix type="saturate" values="0"/>
-  </filter>
-  <rect width="100%" height="100%" filter="url(#g)"/>
-</svg>
-
-<!-- CUSTOM CURSOR -->
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<!-- LOADING SCREEN -->
-<div class="loader" id="loader">
-  <img src="logo-dark.png" alt="AI with Soul" class="loader-logo">
-  <div class="loader-name">AI with Soul</div>
-  <div class="loader-bar-track">
-    <div class="loader-bar-fill"></div>
-  </div>
-</div>
-
-<!-- NAVIGATION -->
-<nav id="site-nav">
-  <div class="nav-inner">
-    <a href="#"><img src="logo-dark.png" alt="AI with Soul" class="nav-logo"></a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#how-it-works">How It Works</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="https://aiwithsoul.com.au/#/book-a-call" class="nav-cta" target="_blank" rel="noopener noreferrer">Book a Call</a></li>
-    </ul>
-    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </div>
-</nav>
-
-<!-- MOBILE MENU -->
-<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
-  <a href="#about" class="mobile-nav-link">About</a>
-  <a href="#services" class="mobile-nav-link">Services</a>
-  <a href="#how-it-works" class="mobile-nav-link">How It Works</a>
-  <a href="#contact" class="mobile-nav-link">Contact</a>
-  <a href="https://aiwithsoul.com.au/#/book-a-call" class="mobile-book" target="_blank" rel="noopener noreferrer">Book a Call</a>
-</nav>
-
-<!-- =============================================
-     HERO
-     ============================================= -->
-<section class="hero" aria-label="Hero">
-  <div class="orb orb-gold"></div>
-  <div class="orb orb-rose"></div>
-  <div class="hero-photo" role="img" aria-label="Kelly Wotherspoon at a professional event"></div>
-  <div class="hero-overlay" aria-hidden="true"></div>
-  <div class="hero-fade-bottom" aria-hidden="true"></div>
-  <span class="ghost-mark hero-ghost" aria-hidden="true">SOUL</span>
-
-  <div class="hero-content">
-    <div class="hero-eyebrow">Kelly Wotherspoon &nbsp;/&nbsp; Claude AI Specialist &nbsp;/&nbsp; Australia</div>
-
-    <span class="hero-title-mask">
-      <span class="hero-title-line">AI with</span>
-    </span>
-    <span class="hero-title-mask">
-      <span class="hero-title-line">Soul</span>
-    </span>
-
-    <div class="hero-divider" aria-hidden="true">
-      <div class="divider-line"></div>
-      <div class="divider-gem"></div>
-      <div class="divider-line"></div>
-    </div>
-
-    <div class="hero-tagline">Systems that work while you sleep.</div>
-    <div class="hero-sub">Stop leaking energy &nbsp;&bull;&nbsp; Start automating &nbsp;&bull;&nbsp; Real infrastructure only</div>
-
-    <div class="hero-ctas">
-      <a href="https://aiwithsoul.com.au/#/book-a-call" class="btn-primary" target="_blank" rel="noopener noreferrer">Book a Call</a>
-      <a href="#services" class="btn-ghost">See What I Build</a>
-    </div>
+  <!-- Grain texture overlay -->
+  <div class="grain">
+    <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <filter id="grain-filter">
+        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+      </filter>
+      <rect width="100%" height="100%" filter="url(#grain-filter)"/>
+    </svg>
   </div>
 
-  <div class="scroll-hint" aria-hidden="true">
-    <span class="scroll-hint-text">Scroll</span>
-    <div class="scroll-hint-line"></div>
-  </div>
-</section>
-
-<!-- =============================================
-     ABOUT
-     ============================================= -->
-<section class="about" id="about" aria-labelledby="about-heading">
-  <div class="about-orb-a" aria-hidden="true"></div>
-  <div class="about-orb-b" aria-hidden="true"></div>
-  <span class="ghost-mark about-ghost" aria-hidden="true">REAL</span>
-
-  <div class="about-grid">
-    <div class="about-photo-wrap reveal-left">
-      <div class="about-photo-frame">
-        <img
-          src="product-1.jpg"
-          alt="Kelly Wotherspoon speaking on stage at a business event"
-          class="about-photo"
-          loading="lazy"
-        >
-        <div class="about-badge">
-          <svg class="about-badge-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2">
-            <circle cx="16" cy="16" r="12"/>
-            <path d="M11 16 l4 4 6-8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span class="about-badge-label">Built Live<br>Every Time</span>
-        </div>
-      </div>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">AI <em>with</em> Soul</a>
+      <ul class="nav-links">
+        <li><a href="#services">What I Do</a></li>
+        <li><a href="#process">How It Works</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="https://aiwithsoul.com.au/#/book-a-call" class="nav-cta">Book a Call</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Open menu">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
     </div>
+  </nav>
 
-    <div class="about-copy reveal-right">
-      <span class="section-label">About Kelly</span>
-      <h2 class="about-heading" id="about-heading">
-        Not a <em>consultant</em>.<br>A builder.
-      </h2>
-      <blockquote class="about-pull">
-        "I don't hand you a strategy doc and walk away. I build the actual systems - live, using the same Claude AI tools I sell - and hand them to you ready to run."
-      </blockquote>
-      <p class="about-body">
-        Kelly Wotherspoon is Australia's leading Claude AI specialist. She works with service-based businesses doing $200K to $2M who are drowning in admin and ready to stop the manual loop. She builds real infrastructure - websites, voice agents, and automation systems - not strategies.
-      </p>
-      <p class="about-body">
-        Her clients don't just save time. They reclaim energy. When your business runs itself, your nervous system relaxes - and that's when the real work begins.
-      </p>
+  <main>
 
-      <div class="about-pillars">
-        <div class="about-pillar">
-          <span class="about-pillar-head">Built Live</span>
-          <span class="about-pillar-body">Every system, every time</span>
-        </div>
-        <div class="about-pillar">
-          <span class="about-pillar-head">No Templates</span>
-          <span class="about-pillar-body">Custom infrastructure only</span>
-        </div>
-        <div class="about-pillar">
-          <span class="about-pillar-head">Claude AI</span>
-          <span class="about-pillar-body">Australia's specialist</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BRAND DIVIDER -->
-<div class="brand-rule" aria-hidden="true">
-  <div class="brand-rule-line"></div>
-  <div class="brand-rule-dot"></div>
-  <div class="brand-rule-gem"></div>
-  <div class="brand-rule-dot"></div>
-  <div class="brand-rule-line"></div>
-</div>
-
-<!-- =============================================
-     HOW IT WORKS
-     ============================================= -->
-<section class="how" id="how-it-works" aria-labelledby="how-heading">
-  <span class="ghost-mark how-ghost" aria-hidden="true">BUILD</span>
-
-  <div class="how-inner">
-    <div class="how-header reveal">
-      <span class="section-label">The Process</span>
-      <h2 class="how-heading" id="how-heading">Real infrastructure.<br>Built live.</h2>
-    </div>
-
-    <div class="how-steps">
-      <div class="how-step reveal delay-1">
-        <div class="step-circle">01</div>
-        <div class="step-title">Discovery Call</div>
-        <p class="step-body">We jump on a call for 45 minutes and I figure out where your business is leaking energy. I'll tell you exactly what to automate and what to leave alone.</p>
-      </div>
-      <div class="how-step reveal delay-2">
-        <div class="step-circle">02</div>
-        <div class="step-title">Live Build</div>
-        <p class="step-body">I build the thing. Website, voice agent, automation - whatever your business needs. I do it live with Claude, usually while you're watching. You see everything.</p>
-      </div>
-      <div class="how-step reveal delay-3">
-        <div class="step-circle">03</div>
-        <div class="step-title">Systems Running</div>
-        <p class="step-body">You wake up to bookings confirmed and follow-ups already sent. Your business runs while you sleep. Your energy goes back to the work you actually love.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- =============================================
-     SERVICES
-     ============================================= -->
-<section class="services" id="services" aria-labelledby="services-heading">
-  <div class="services-center-orb" aria-hidden="true"></div>
-
-  <div class="services-inner">
-    <div class="services-header">
-      <div class="reveal-left">
-        <span class="section-label">What I Build</span>
-        <h2 class="services-heading" id="services-heading">
-          I build AI systems<br>for real businesses.
-        </h2>
-      </div>
-      <div class="reveal-right">
-        <p class="services-intro">
-          I specialise in <strong>Claude AI</strong> and build websites, voice agents, and automation for service-based businesses. Everything I sell, I've built with the same tools. I do this every day, live, in front of people.
-        </p>
-      </div>
-    </div>
-
-    <div class="services-grid">
-
-      <!-- Card 01 - Featured (wider) -->
-      <div class="svc-card reveal delay-1">
-        <span class="svc-num">01</span>
-        <svg class="svc-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="3" y="7" width="32" height="20" rx="1" stroke="currentColor" stroke-width="1.4"/>
-          <line x1="3" y1="19" x2="35" y2="19" stroke="currentColor" stroke-width="1" opacity="0.35"/>
-          <line x1="11" y1="31" x2="27" y2="31" stroke="currentColor" stroke-width="1.4"/>
-          <line x1="19" y1="27" x2="19" y2="31" stroke="currentColor" stroke-width="1.4"/>
-        </svg>
-        <div class="svc-name">Claude-Built Websites</div>
-        <p class="svc-body">
-          A premium single-page website built live with Claude AI. A full website built live with Claude AI, designed to match the quality of what you actually deliver. You watch me build it. You get the URL the same day.
-        </p>
-        <a href="https://aiwithsoul.com.au/#/book-a-call" class="svc-link" target="_blank" rel="noopener noreferrer">Book a call</a>
-      </div>
-
-      <!-- Card 02 -->
-      <div class="svc-card reveal delay-2">
-        <span class="svc-num">02</span>
-        <svg class="svc-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M10 8 C10 8, 8 10, 8 14 C8 22, 13 28, 19 28 C25 28, 30 22, 30 14 C30 10, 28 8, 28 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-          <circle cx="19" cy="14" r="4" stroke="currentColor" stroke-width="1.4"/>
-          <line x1="19" y1="28" x2="19" y2="34" stroke="currentColor" stroke-width="1.4"/>
-          <line x1="14" y1="34" x2="24" y2="34" stroke="currentColor" stroke-width="1.4"/>
-        </svg>
-        <div class="svc-name">AI Voice Agents</div>
-        <p class="svc-body">
-          A phone agent that answers calls, books appointments, and follows up. Sounds human. Works 24/7. You never have to pick up the phone again unless you want to.
-        </p>
-        <a href="https://aiwithsoul.com.au/#/book-a-call" class="svc-link" target="_blank" rel="noopener noreferrer">Book a call</a>
-      </div>
-
-      <!-- Card 03 -->
-      <div class="svc-card reveal delay-3">
-        <span class="svc-num">03</span>
-        <svg class="svc-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="5" y="9" width="9" height="9" rx="1" stroke="currentColor" stroke-width="1.4"/>
-          <rect x="24" y="9" width="9" height="9" rx="1" stroke="currentColor" stroke-width="1.4"/>
-          <rect x="14.5" y="23" width="9" height="9" rx="1" stroke="currentColor" stroke-width="1.4"/>
-          <line x1="14" y1="13.5" x2="24" y2="13.5" stroke="currentColor" stroke-width="1" opacity="0.45"/>
-          <line x1="19" y1="18" x2="19" y2="23" stroke="currentColor" stroke-width="1" opacity="0.45"/>
-        </svg>
-        <div class="svc-name">Business Automation</div>
-        <p class="svc-body">
-          End-to-end automation of your marketing, client experience, and admin. Follow-ups that happen without you. Bookings that confirm themselves. The manual loop, stopped for good.
-        </p>
-        <a href="https://aiwithsoul.com.au/#/book-a-call" class="svc-link" target="_blank" rel="noopener noreferrer">Book a call</a>
-      </div>
-
-      <!-- Card 04 -->
-      <div class="svc-card reveal delay-4">
-        <span class="svc-num">04</span>
-        <svg class="svc-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M7 31 L19 7 L31 31" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-          <line x1="11" y1="23" x2="27" y2="23" stroke="currentColor" stroke-width="1" opacity="0.45"/>
-          <circle cx="19" cy="7" r="2" fill="currentColor" opacity="0.4"/>
-        </svg>
-        <div class="svc-name">Custom AI Systems</div>
-        <p class="svc-body">
-          Bespoke Claude AI integrations built for your existing business. Built live, documented, handed over ready to run. You own it outright - no dependency, no monthly mystery charges.
-        </p>
-        <a href="https://aiwithsoul.com.au/#/book-a-call" class="svc-link" target="_blank" rel="noopener noreferrer">Book a call</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- =============================================
-     MOOD BREAK
-     ============================================= -->
-<div class="mood-break" aria-hidden="true">
-  <div class="mood-bg"></div>
-  <div class="mood-overlay"></div>
-  <div class="mood-content reveal">
-    <div class="mood-quote">Your business should run itself. That's what I build.</div>
-    <div class="mood-attr">Kelly Wotherspoon &nbsp;/&nbsp; AI with Soul</div>
-  </div>
-</div>
-
-<!-- =============================================
-     CTA SECTION
-     ============================================= -->
-<section class="cta-section" aria-labelledby="cta-heading">
-  <div class="cta-texture" aria-hidden="true"></div>
-  <div class="cta-orb" aria-hidden="true"></div>
-  <div class="cta-orb-rose" aria-hidden="true"></div>
-
-  <div class="cta-inner">
-    <span class="section-label">Ready to stop the leak?</span>
-    <h2 class="cta-heading reveal" id="cta-heading">
-      Your business should<br>run while you <em>sleep</em>.
-    </h2>
-    <p class="cta-sub reveal">
-      Book a 45-minute discovery call. We'll map exactly where your energy is leaking and what to automate first. No pitch. No pressure. Just a clear plan and someone who will actually build it.
-    </p>
-    <div class="cta-buttons reveal">
-      <a href="https://aiwithsoul.com.au/#/book-a-call" class="btn-primary" target="_blank" rel="noopener noreferrer">Book a Call</a>
-      <a href="mailto:kelly.wotherspoon@peaceofeden.com.au" class="btn-ghost">Send an Email</a>
-    </div>
-    <div class="cta-footnote reveal">
-      Built with Claude AI &nbsp;&bull;&nbsp; Australia's Claude Specialist &nbsp;&bull;&nbsp; Real infrastructure, no fluff
-    </div>
-  </div>
-</section>
-
-<!-- =============================================
-     CONTACT
-     ============================================= -->
-<section class="contact" id="contact" aria-labelledby="contact-heading">
-  <div class="contact-inner">
-
-    <div class="reveal-left">
-      <span class="section-label">Get in Touch</span>
-      <h2 class="contact-heading" id="contact-heading">Let's build<br>something real.</h2>
-      <p class="contact-sub">
-        Direct contact for direct people. If you're a service-based business ready to stop the manual loop, this is where it starts.
-      </p>
-
-      <div class="contact-items">
-        <div class="contact-item">
-          <div class="contact-icon-box" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-              <polyline points="22,6 12,13 2,6"/>
-            </svg>
-          </div>
-          <div class="contact-item-text">
-            <a href="mailto:kelly.wotherspoon@peaceofeden.com.au">kelly.wotherspoon@peaceofeden.com.au</a>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="label reveal">AI Systems Builder for Service Businesses</span>
+          <h1 class="reveal reveal-delay-1">Your business should work as hard as <span>you do.</span></h1>
+          <p class="reveal reveal-delay-2">Right now it probably doesn't. I build AI systems that handle your bookings, follow-ups, and client experience - so you stop leaking energy on stuff that should just run.</p>
+          <div class="hero-ctas reveal reveal-delay-3">
+            <a href="https://aiwithsoul.com.au/#/book-a-call" class="btn btn-primary">Book a Call</a>
+            <a href="#process" class="btn btn-ghost">See How It Works</a>
           </div>
         </div>
-        <div class="contact-item">
-          <div class="contact-icon-box" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="2" y1="12" x2="22" y2="12"/>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/>
-            </svg>
+        <div class="hero-image reveal reveal-delay-2">
+          <img src="headshot-1.jpg" alt="Kelly Wotherspoon - AI Systems Builder and Claude AI Specialist" loading="eager">
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROBLEM ===== -->
+    <section class="problem" id="problem">
+      <div class="container">
+        <span class="label reveal">Sound familiar?</span>
+        <h2 class="reveal">You're doing everything yourself.</h2>
+        <p class="problem-subtitle reveal">And it's draining you.</p>
+        <div class="problem-grid">
+          <div class="problem-card reveal">
+            <h3>Your calendar is chaos</h3>
+            <p>Bookings, cancellations, reminders. All you, all manual, all the time. And every missed one costs you money.</p>
           </div>
-          <div class="contact-item-text">
-            <a href="https://aiwithsoul.com.au" target="_blank" rel="noopener noreferrer">aiwithsoul.com.au</a>
+          <div class="problem-card reveal reveal-delay-1">
+            <h3>Leads go cold while you deliver</h3>
+            <p>Someone enquires, you're mid-session, and by the time you reply they've booked someone else. You know the feeling.</p>
+          </div>
+          <div class="problem-card reveal reveal-delay-2">
+            <h3>Your website just sits there</h3>
+            <p>It looks fine. It does nothing. No one books from it, no one stays on it, and you spent way too much on it for that.</p>
+          </div>
+          <div class="problem-card reveal reveal-delay-3">
+            <h3>Every AI 'expert' sells courses</h3>
+            <p>You know AI could help but everyone's selling information, not actually building anything. You need someone who builds.</p>
           </div>
         </div>
-        <div class="contact-item">
-          <div class="contact-icon-box" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-              <circle cx="12" cy="10" r="3"/>
-            </svg>
+      </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section class="services" id="services">
+      <div class="container">
+        <span class="label reveal">What I build</span>
+        <h2 class="reveal">AI systems that actually run.</h2>
+        <p class="services-intro reveal">Not strategy docs. Not courses about AI. Actual infrastructure - built with Claude, tested live, working before I'm done.</p>
+        <div class="services-grid">
+          <div class="service-card reveal">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            </div>
+            <h3>Websites That Convert</h3>
+            <p>Not just pretty. Built to turn visitors into bookings and make your business look as good online as it actually is in person.</p>
           </div>
-          <div class="contact-item-text" style="opacity: 0.7;">Australia - Remote delivery worldwide</div>
+          <div class="service-card reveal reveal-delay-1">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <h3>AI Voice Agents</h3>
+            <p>Your phone gets answered 24/7. Appointments get booked. Confirmations get sent. Nobody calls in sick and no leads get missed.</p>
+          </div>
+          <div class="service-card reveal reveal-delay-2">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <h3>Automation</h3>
+            <p>Follow-ups, onboarding, reminders, admin. All the things eating your mornings - running automatically while you do the work that matters.</p>
+          </div>
+          <div class="service-card reveal reveal-delay-3">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </div>
+            <h3>The Full Stack</h3>
+            <p>I build it all together. Website, voice agent, automations - one integrated system where nothing falls through the cracks.</p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="social-row">
-        <a href="https://aiwithsoul.com.au" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Website">W</a>
-        <a href="https://aiwithsoul.com.au" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
-        <a href="https://aiwithsoul.com.au" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Instagram">ig</a>
-      </div>
-    </div>
-
-    <div class="contact-aside reveal-right">
-      <div class="aside-block">
-        <span class="aside-block-title">Book a Discovery Call</span>
-        <div class="aside-block-body">
-          45 minutes. We map your energy leaks and build a clear automation plan. No pitch, no pressure - book directly at aiwithsoul.com.au
+    <!-- ===== PROCESS ===== -->
+    <section class="process" id="process">
+      <div class="container">
+        <span class="label reveal">The process</span>
+        <h2 class="reveal">Three steps. That's it.</h2>
+        <div class="steps">
+          <div class="step reveal">
+            <div class="step-number">01</div>
+            <h3>We talk.</h3>
+            <p>30 minutes. I ask the right questions. You tell me where you're leaking energy and what's keeping you up at night. No pitch deck, just a real conversation.</p>
+          </div>
+          <div class="step reveal reveal-delay-1">
+            <div class="step-number">02</div>
+            <h3>I build it.</h3>
+            <p>Not outsourced. Not templated. I build your systems live with Claude - the same AI tools I use for everything. You can watch if you want.</p>
+          </div>
+          <div class="step reveal reveal-delay-2">
+            <div class="step-number">03</div>
+            <h3>It runs.</h3>
+            <p>Your business works while you sleep. Leads get followed up. Calls get answered. Your energy goes back to the work that actually matters.</p>
+          </div>
         </div>
       </div>
-      <div class="aside-block">
-        <span class="aside-block-title">Who This Is For</span>
-        <div class="aside-block-body">
-          Service-based businesses doing $200K-$2M who are drowning in admin and ready to stop the manual loop. If you know AI could help but don't know who to trust - this is the call.
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="about" id="about">
+      <div class="container about-grid">
+        <div class="about-image reveal">
+          <img src="headshot-2.jpg" alt="Kelly Wotherspoon working - Claude AI Specialist Australia" loading="lazy">
+        </div>
+        <div class="about-content">
+          <span class="label reveal">About Kelly</span>
+          <h2 class="reveal">I'm not what you'd expect.</h2>
+          <p class="reveal">I lost 60kg. Rebuilt my entire life. And somewhere in the middle of all that, fell completely in love with building things with Claude AI.</p>
+          <p class="reveal">Now I build AI systems for service businesses that are done doing everything themselves. Websites that actually convert. Voice agents that answer your phone around the clock. Automations that handle the stuff you keep forgetting to do.</p>
+          <p class="reveal">I'm a mum. I have ADHD. I speak at conferences but I show up as <em>myself</em> - not some polished version of a thought leader. I build things live, in front of people, and I'm really bloody good at it.</p>
+          <p class="reveal">Everything on this site was built with Claude. I don't sell what I haven't built myself.</p>
+          <a href="https://aiwithsoul.com.au/#/book-a-call" class="btn btn-primary reveal">Work With Me</a>
         </div>
       </div>
-      <div class="aside-block">
-        <span class="aside-block-title">How It's Built</span>
-        <div class="aside-block-body">
-          Every system, website, and agent is built live using Claude AI. Kelly builds it herself. No hand-offs, no overseas outsourcing, no black box.
+    </section>
+
+    <!-- ===== RESULTS ===== -->
+    <section class="results">
+      <div class="container">
+        <span class="label reveal">Real results</span>
+        <h2 class="reveal">What actually happens.</h2>
+        <div class="results-grid">
+          <div class="result-card reveal">
+            <div class="result-stat">Live in one session</div>
+            <h3>Websites that work</h3>
+            <p>Built on the call, converting before we hang up. No weeks of back-and-forth with a designer who doesn't get your business.</p>
+          </div>
+          <div class="result-card reveal reveal-delay-1">
+            <div class="result-stat">Answering 24/7</div>
+            <h3>Voice agents that show up</h3>
+            <p>Your phone gets answered every time. Appointments booked, confirmations sent, and you didn't have to hire anyone.</p>
+          </div>
+          <div class="result-card reveal reveal-delay-2">
+            <div class="result-stat">Hours back every week</div>
+            <h3>Energy you actually feel</h3>
+            <p>The admin, follow-ups, and reminders that used to eat your mornings? They just happen now. You barely think about them.</p>
+          </div>
         </div>
       </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <!-- TODO: Replace placeholder quotes below with real client testimonials -->
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <span class="label reveal">What they say</span>
+        <h2 class="reveal">From people who stopped doing it all themselves.</h2>
+        <div class="testimonial-grid">
+          <div class="testimonial-card reveal">
+            <blockquote>She built my entire website live on a call. I watched it happen. By the time we hung up, it was live and I had my first booking through it that same week.</blockquote>
+            <div class="testimonial-author">Client Name</div>
+            <div class="testimonial-role">Replace with real testimonial</div>
+          </div>
+          <div class="testimonial-card reveal reveal-delay-1">
+            <blockquote>I was spending two hours a day on admin and follow-ups. Kelly built a system that does all of it. I genuinely don't know how I ran my business before.</blockquote>
+            <div class="testimonial-author">Client Name</div>
+            <div class="testimonial-role">Replace with real testimonial</div>
+          </div>
+          <div class="testimonial-card reveal reveal-delay-2">
+            <blockquote>I'd talked to three other AI people and none of them actually built anything. Kelly had my voice agent answering calls within 48 hours. That's the difference.</blockquote>
+            <div class="testimonial-author">Client Name</div>
+            <div class="testimonial-role">Replace with real testimonial</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FINAL CTA ===== -->
+    <section class="final-cta">
+      <div class="container">
+        <h2 class="reveal">Ready to stop leaking energy?</h2>
+        <p class="reveal">Book a 30-minute call. I'll tell you exactly what I'd build and what it costs. No pitch decks. No 47-step funnels. Just a straight conversation about what your business actually needs.</p>
+        <a href="https://aiwithsoul.com.au/#/book-a-call" class="btn btn-primary btn-lg reveal">Book Your Call</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo-light.png" alt="AI with Soul" class="footer-logo">
+        <span class="footer-text">&copy; 2026 AI with Soul. All rights reserved.</span>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:kelly.wotherspoon@peaceofeden.com.au">Email</a>
+        <a href="https://aiwithsoul.com.au">aiwithsoul.com.au</a>
+        <button class="save-pdf" onclick="window.print()">Save as PDF</button>
+      </div>
     </div>
+  </footer>
 
-  </div>
-</section>
-
-<!-- =============================================
-     MOOD GALLERY STRIP
-     ============================================= -->
-<div class="mood-gallery" aria-hidden="true">
-  <div class="gallery-cell">
-    <img src="vibe-1.png" alt="Warm golden fabric texture" loading="lazy">
-  </div>
-  <div class="gallery-cell">
-    <img src="vibe-3.png" alt="White marble with rose gold veining" loading="lazy">
-  </div>
-  <div class="gallery-cell">
-    <img src="vibe-5.png" alt="Clean marble workspace" loading="lazy">
-  </div>
-</div>
-
-<!-- =============================================
-     FOOTER
-     ============================================= -->
-<footer>
-  <div class="footer-inner">
-    <img src="logo-dark.png" alt="AI with Soul" class="footer-logo">
-    <div class="footer-mid">
-      <span class="footer-tagline">Systems that work while you sleep.</span>
-      <span class="footer-copy">&copy; 2026 AI with Soul &nbsp;&bull;&nbsp; Kelly Wotherspoon &nbsp;&bull;&nbsp; Built with Claude AI</span>
-    </div>
-    <div class="footer-links">
-      <a href="https://aiwithsoul.com.au/#/book-a-call" target="_blank" rel="noopener noreferrer">Book a Call</a>
-      <a href="mailto:kelly.wotherspoon@peaceofeden.com.au">Email Kelly</a>
-    </div>
-  </div>
-</footer>
-
-<!-- =============================================
-     JAVASCRIPT
-     ============================================= -->
-<script>
-(function() {
-  'use strict';
-
-  // --- LOADING SCREEN ---
-  window.addEventListener('load', function () {
-    setTimeout(function () {
-      var loader = document.getElementById('loader');
-      if (loader) loader.classList.add('done');
-    }, 1650);
-  });
-
-  // --- CUSTOM CURSOR ---
-  var dot  = document.getElementById('cursorDot');
-  var ring = document.getElementById('cursorRing');
-  var mx = 0, my = 0, rx = 0, ry = 0;
-
-  document.addEventListener('mousemove', function (e) {
-    mx = e.clientX;
-    my = e.clientY;
-    dot.style.left = mx + 'px';
-    dot.style.top  = my + 'px';
-  });
-
-  (function animateRing() {
-    rx += (mx - rx) * 0.11;
-    ry += (my - ry) * 0.11;
-    ring.style.left = rx + 'px';
-    ring.style.top  = ry + 'px';
-    requestAnimationFrame(animateRing);
-  })();
-
-  document.querySelectorAll('a, button, .svc-card, .how-step').forEach(function (el) {
-    el.addEventListener('mouseenter', function () { ring.classList.add('hover'); });
-    el.addEventListener('mouseleave', function () { ring.classList.remove('hover'); });
-  });
-
-  // --- STICKY NAV ---
-  var nav = document.getElementById('site-nav');
-  window.addEventListener('scroll', function () {
-    if (window.scrollY > 72) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-  }, { passive: true });
-
-  // --- HAMBURGER / MOBILE MENU ---
-  var burger = document.getElementById('hamburger');
-  var mobileNav = document.getElementById('mobileNav');
-
-  burger.addEventListener('click', function () {
-    var isOpen = mobileNav.classList.toggle('open');
-    burger.classList.toggle('open', isOpen);
-    burger.setAttribute('aria-expanded', String(isOpen));
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-  });
-
-  document.querySelectorAll('.mobile-nav-link, .mobile-book').forEach(function (link) {
-    link.addEventListener('click', function () {
-      mobileNav.classList.remove('open');
-      burger.classList.remove('open');
-      burger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
+  <script>
+    // Scroll reveal animations
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -40px 0px'
     });
-  });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-  // --- SCROLL REVEAL ---
-  var revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-  var revealObs = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-  revealEls.forEach(function (el) { revealObs.observe(el); });
-
-  // --- SMOOTH SCROLL for anchor links ---
-  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-    anchor.addEventListener('click', function (e) {
-      var href = this.getAttribute('href');
-      if (href === '#') return;
-      var target = document.querySelector(href);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
-
-  // --- MOOD BREAK SUBTLE PARALLAX ---
-  var moodBg = document.querySelector('.mood-bg');
-  if (moodBg) {
-    window.addEventListener('scroll', function () {
-      var moodBreak = document.querySelector('.mood-break');
-      if (!moodBreak) return;
-      var rect = moodBreak.getBoundingClientRect();
-      var wh   = window.innerHeight;
-      if (rect.top < wh && rect.bottom > 0) {
-        var progress = (wh - rect.top) / (wh + rect.height);
-        var shift    = (progress - 0.5) * 40;
-        moodBg.style.transform = 'scale(1.06) translateY(' + shift + 'px)';
-      }
+    // Nav scroll shadow
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
     }, { passive: true });
-  }
 
-})();
-</script>
+    // Mobile nav toggle
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => {
+      links.classList.toggle('open');
+      const isOpen = links.classList.contains('open');
+      toggle.setAttribute('aria-expanded', isOpen);
+      toggle.innerHTML = isOpen
+        ? '<svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
+        : '<svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+    });
+
+    // Close mobile nav on link click
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.classList.remove('open');
+        toggle.innerHTML = '<svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+      });
+    });
+
+    // Subtle parallax on hero image
+    const heroImg = document.querySelector('.hero-image img');
+    if (heroImg && window.innerWidth > 768) {
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (y < 800) {
+          heroImg.style.transform = 'translateY(' + (y * 0.06) + 'px)';
+        }
+      }, { passive: true });
+    }
+  </script>
 
 </body>
 </html>
